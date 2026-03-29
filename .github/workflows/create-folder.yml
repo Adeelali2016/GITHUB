@@ -1,14 +1,30 @@
-name: Create Folder Workflow
-on: [push]
+name: Create Adeel Folder
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write  # Required to commit changes back to the branch
 
 jobs:
   create-folder:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create folder and placeholder
+        run: |
+          mkdir -p adeel
+          touch adeel/.gitkeep
+          
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add adeel/
+          git commit -m "chore: create adeel folder via workflow" || echo "No changes to commit"
+          git push
 
       - name: Create SAdeel Folder
         run: mkdir -p Shayan
