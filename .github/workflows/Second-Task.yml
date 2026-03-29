@@ -1,0 +1,19 @@
+name: CI
+on:
+    pull_request:
+      branches: [main]
+    workflow_dispatch:
+
+permissions:
+  contents: write  # Required to commit changes back to the branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install dependencies
+      run: npm install # Use 'npm ci' for clean and fast installs in CI environments
+    - name: Run tests
+      run: npm test
