@@ -1,20 +1,19 @@
 name: Create Adeel Folder
-
 on:
   pull_request:
-    branches: [main]
+    types: [opened, synchronize]
 
-    permissions:
-        contents: write  # Required to commit changes back to the branch
-      
-      jobs:
-        create-folder:
-          runs-on: ubuntu-latest
-          steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-      
-            - name: Create folder and placeholder
-              run: |
-                mkdir -p adeel
-                touch adeel/.gitkeep
+permissions:
+  contents: write  # Required to commit changes back to the branch
+
+jobs:
+  create-folder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create folder and placeholder
+        run: |
+          mkdir -p adeel
+          touch adeel/.gitkeep
