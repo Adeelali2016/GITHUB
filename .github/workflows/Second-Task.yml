@@ -1,14 +1,13 @@
 name: CI
-
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+    push:
+      branches: [main]
+    pull_request:
+      branches: [main]
+    workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write  # Required to commit changes back to the branch
 
 jobs:
   build:
