@@ -1,0 +1,23 @@
+name: Create Folder Workflow
+on: [push]
+
+jobs:
+  create-folder:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create Gemini Folder
+        run: mkdir -p Gemini
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Git only tracks folders with files, so we add a .gitkeep
+          touch Gemini/.gitkeep
+          git add Gemini/.gitkeep
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Add Gemini folder" && git push)
