@@ -18,15 +18,6 @@ jobs:
           mkdir -p adeel
           touch adeel/.gitkeep
           
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add adeel/
-          git commit -m "chore: create adeel folder via workflow" || echo "No changes to commit"
-          git push
-
-      - name: Create SAdeel Folder
-        run: mkdir -p Shayan
+    
 
 
