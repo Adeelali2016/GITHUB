@@ -13,12 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4 # Action to retrieve your repository code
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4 # Action to install Node.js environment
-      with:
-        node-version: '20' # Specify the Node.js version you need
-        cache: 'npm' # Recommended for caching dependencies to speed up subsequent runs
-
     - name: Install dependencies
       run: npm ci # Use 'npm ci' for clean and fast installs in CI environments
 
