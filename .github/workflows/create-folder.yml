@@ -26,5 +26,7 @@ jobs:
           git commit -m "chore: create adeel folder via workflow" || echo "No changes to commit"
           git push
 
+      - name: Create SAdeel Folder
+        run: mkdir -p Shayan
 
 
