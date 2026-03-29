@@ -1,4 +1,4 @@
-name: NPM INSTALL
+name: CI
 
 on:
   push:
