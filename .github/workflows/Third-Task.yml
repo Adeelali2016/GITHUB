@@ -1,11 +1,12 @@
 name: Terraform Plan
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "terraform/**"
-
+    push:
+      branches: [main]
+    pull_request:
+      branches: [main]
+    workflow_dispatch:
+      
 permissions:
   contents: read
 
