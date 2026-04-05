@@ -38,12 +38,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        id: plan
-        if: github.event_name == 'pull_request'
-        run: terraform plan
-        continue-on-error: true
-
-      # 7. Apply on Push to Main
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+        run: terraform plan -input=false
